@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class DriverManager {
 
-    public static AppiumDriver createInstance(String platformName){
+    public static AppiumDriver createInstance(String platformName) {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", CapabilitiesManager.capabilities().platformName());
@@ -19,7 +19,7 @@ public class DriverManager {
         AppiumDriver driver = null;
         DriverType platform = DriverType.getDriverByName(platformName);
 
-        switch (platform){
+        switch (platform) {
             case ANDROID:
                 driver = new AndroidDriver(ConfigurationManager.configuration().Appium(), capabilities);
                 break;

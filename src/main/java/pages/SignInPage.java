@@ -1,10 +1,9 @@
 package pages;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSFindBy;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage {
@@ -18,11 +17,10 @@ public class SignInPage {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy(id = "welcome.signUpButton")
-    @iOSFindBy(className = "")
-    private MobileElement loc_btnSignIn;
+    @AndroidFindBy(accessibility = "Login Screen")
+    private WebElement loc_btnSignIn;
 
-    public void clkSignInBtn(){
+    public void clkSignInBtn() {
         loc_btnSignIn.click();
     }
 }

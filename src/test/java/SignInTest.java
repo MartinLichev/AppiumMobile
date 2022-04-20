@@ -1,4 +1,4 @@
-import org.junit.Test;
+import org.testng.annotations.Test;
 import pages.SignInPage;
 
 public class SignInTest extends BaseTest{

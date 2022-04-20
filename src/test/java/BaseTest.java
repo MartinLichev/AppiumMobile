@@ -15,17 +15,17 @@ public class BaseTest {
     protected int waitTime = 0;
 
     @BeforeSuite(alwaysRun = true)
-    public void suiteSetup(){
+    public void suiteSetup() {
         String platformName = CapabilitiesManager.capabilities().platformName();
         driver = DriverManager.createInstance(platformName);
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(ConfigurationManager.configuration().waitTime()).getSeconds());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(ConfigurationManager.configuration().waitTime()));
         waitTime = ConfigurationManager.configuration().waitTime();
     }
 
     @AfterSuite(alwaysRun = true)
-    public void suiteTearDown(){
-        if(driver!=null){
+    public void suiteTearDown() {
+        if (driver != null) {
             driver.quit();
         }
     }
