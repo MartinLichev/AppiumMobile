@@ -2,28 +2,32 @@ import config.CapabilitiesManager;
 import config.ConfigurationManager;
 import driver.DriverManager;
 import io.appium.java_client.AppiumDriver;
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import pages.MenuPage;
 
-import java.time.Duration;
+import java.net.MalformedURLException;
 
 public class BaseTest {
 
     protected static AppiumDriver driver;
     protected static WebDriverWait wait;
+    protected static MenuPage menuPage;
     protected int waitTime = 0;
 
-    @BeforeSuite(alwaysRun = true)
-    public void suiteSetup() {
+    @Before
+    public void suiteSetup() throws MalformedURLException {
         String platformName = CapabilitiesManager.capabilities().platformName();
         driver = DriverManager.createInstance(platformName);
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(ConfigurationManager.configuration().waitTime()));
+        wait = new WebDriverWait(driver, ConfigurationManager.configuration().waitTime());
         waitTime = ConfigurationManager.configuration().waitTime();
+
+        menuPage = new MenuPage(driver);
     }
 
-    @AfterSuite(alwaysRun = true)
+    @After
     public void suiteTearDown() {
         if (driver != null) {
             driver.quit();

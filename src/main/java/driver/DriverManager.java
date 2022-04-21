@@ -1,15 +1,18 @@
 package driver;
 
 import config.CapabilitiesManager;
-import config.ConfigurationManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 public class DriverManager {
+    private static final String APPIUM = "http://localhost:4723/wd/hub";
 
-    public static AppiumDriver createInstance(String platformName) {
+    public static AppiumDriver createInstance(String platformName) throws MalformedURLException {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", CapabilitiesManager.capabilities().platformName());
@@ -21,7 +24,7 @@ public class DriverManager {
 
         switch (platform) {
             case ANDROID:
-                driver = new AndroidDriver(ConfigurationManager.configuration().Appium(), capabilities);
+                driver = new AndroidDriver(new URL(APPIUM), capabilities);
                 break;
 
             case IOS:
