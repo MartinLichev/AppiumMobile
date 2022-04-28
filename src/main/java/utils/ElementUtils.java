@@ -1,9 +1,7 @@
 package utils;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import lombok.experimental.UtilityClass;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 @UtilityClass
@@ -22,6 +20,6 @@ public class ElementUtils {
      * @return The WebElement found by the driver
      */
     public static WebElement buildWebElement(AppiumDriver driver, String xpath, Object... param) {
-        return driver.findElementByXPath(formatXpath(formatXpath(xpath,param)));
+        return driver.findElementByXPath(formatXpath(formatXpath(xpath, param)));
     }
 }
