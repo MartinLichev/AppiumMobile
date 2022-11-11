@@ -11,12 +11,19 @@ public enum DriverType {
         this.driverType = type;
     }
 
-    private String driverType;
+    private final String driverType;
+
     public String getDriverType() {
         return this.driverType;
     }
 
-    public static DriverType getDriverByName(String platformName){
+    /**
+     * Used when determining "platform"
+     *
+     * @param platformName Android/IoS
+     * @return "platform" to upper case
+     */
+    public static DriverType getDriverByName(String platformName) {
         return DriverType.valueOf(platformName.toUpperCase(Locale.ROOT));
     }
 }
