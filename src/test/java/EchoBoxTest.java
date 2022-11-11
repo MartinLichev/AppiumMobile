@@ -1,17 +1,23 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.EchoBoxPage;
+import pages.MenuPage;
 
-public class EchoBoxTest extends BaseTest{
+public class EchoBoxTest extends BaseTest {
 
     EchoBoxPage echoBoxPage;
 
-    @Test
-    public void sendKeyEchoBox(){
-        driver.resetApp();
+    MenuPage menuPage;
 
+    @Override
+    public void preconditions() {
+        resetApp();
+        menuPage = new MenuPage(getDriver());
         echoBoxPage = menuPage.clkEchoBoxBtn();
+    }
 
+    @Test
+    public void sendKeyEchoBox() {
         echoBoxPage.setMsg("test");
         echoBoxPage = echoBoxPage.clkSaveBtn();
 

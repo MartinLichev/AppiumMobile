@@ -13,4 +13,10 @@ public interface Configuration extends Config {
 
     @Key("waitTime")
     int waitTime();
+
+    @Key("showReport")
+    boolean showReport();
+
+    @Key("path.screenShots")
+    String path2Screenshots();
 }
