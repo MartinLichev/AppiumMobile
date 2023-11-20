@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
 
+import static java.time.Duration.*;
+
 /**
  * Provides drive, timeout and initialization of elements to child pages (PageFactory)
  */
@@ -17,6 +19,6 @@ public abstract class BasePage {
 
     public BasePage(AppiumDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(TIMEOUT)), this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver, ofSeconds(TIMEOUT)), this);
     }
 }
